@@ -14,18 +14,18 @@ def today():
 
 class Media(Model):
     id = Column(Integer, primary_key=True)
-    name = Column(String(50), unique=True, nullable=False)
-    path = Column(String(250), unique=True, nullable=False)
+    name = Column(String(50), unique=True, nullable=True)
+    # path = Column(String(250), unique=True, nullable=True)
     photo = Column(ImageColumn(thumbnail_size=(30, 30, True), size=(300, 300, True)))
-    posted = Column(Date, default=today, nullable=False)
+    # posted = Column(Date, default=today, nullable=False)
     publications = relationship("Publication")
-    publications_id = Column(Integer, ForeignKey('publication.id'), nullable=False)
+    publications_id = Column(Integer, ForeignKey('publication.id'), nullable=True)
     news = relationship("News")
-    news_id = Column(Integer, ForeignKey('news.id'), nullable=False)
+    news_id = Column(Integer, ForeignKey('news.id'), nullable=True)
     activities = relationship("Activity")
-    activities_id = Column(Integer, ForeignKey('activity.id'), nullable=False)
+    activities_id = Column(Integer, ForeignKey('activity.id'), nullable=True)
     messages = relationship("Message")
-    messages_id = Column(Integer, ForeignKey('message.id'), nullable=False)
+    messages_id = Column(Integer, ForeignKey('message.id'), nullable=True)
 
     def photo_img(self):
         im = ImageManager()

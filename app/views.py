@@ -1,7 +1,7 @@
 from flask import render_template
 from flask_appbuilder.models.sqla.interface import SQLAInterface
 from flask_appbuilder.views import MasterDetailView
-from flask_appbuilder import ModelView, BaseView
+from flask_appbuilder import ModelView
 from .models import About, News, Publication, Activity, Message, Media
 from app import appbuilder, db
 from flask_appbuilder.widgets import ListThumbnail, ListAddWidget, FormInlineWidget, ListMasterWidget
@@ -11,15 +11,17 @@ class MediaView(ModelView):
 
     datamodel = SQLAInterface(Media)
 
-    list_columns = ['name', 'news', 'activities', 'publications', 'messages', 'posted']
+    list_widget = ListThumbnail
+
+    list_columns = ['news', 'activities', 'publications', 'messages', 'photo']
 
 
     add_fieldsets = [
-        ('Media', {'fields': ['photo']})
+        ('Media', {'fields': ['photo', 'publications', 'name']})
     ]
 
     edit_fieldsets = [
-        ('Media', {'fields': ['photo']})
+        ('Media', {'fields': ['publications', 'news']})
     ]
 
 
@@ -31,10 +33,11 @@ class AboutView(ModelView):
 class NewsView(MasterDetailView):
     datamodel = SQLAInterface(News)
 
-    list_widget = ListMasterWidget
 
-    list_columns = ['name','posted_date', 'media']
-    label_columns = {'name':'News Title', 'posted_date':'Posted On', 'media':'Gallery'}
+
+    # list_columns = ['name','posted_date', 'media']
+    add_columns = ['name', 'body', 'media']
+    # label_columns = {'name':'News Title', 'posted_date':'Posted On', 'media':'Gallery'}
     related_views = [MediaView]
 
 
