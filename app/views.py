@@ -1,10 +1,10 @@
 from flask import render_template
 from flask_appbuilder.models.sqla.interface import SQLAInterface
 from flask_appbuilder.views import MasterDetailView
-from flask_appbuilder import ModelView
+from flask_appbuilder import ModelView, AppBuilder
 from .models import About, News, Publication, Activity, Message, Media
 from app import appbuilder, db
-from flask_appbuilder.widgets import ListThumbnail, ListAddWidget, FormInlineWidget, ListMasterWidget
+from flask_appbuilder.widgets import ListThumbnail, ListAddWidget, FormInlineWidget, ListMasterWidget, ListItem
 
 
 class MediaView(ModelView):
@@ -24,6 +24,10 @@ class MediaView(ModelView):
         ('Media', {'fields': ['publications', 'news']})
     ]
 
+class MyMediaView(ModelView):
+    datamodel = SQLAInterface(Media)
+    add_template = 'media_add.html'
+
 
 class AboutView(ModelView):
     datamodel = SQLAInterface(About)
@@ -36,19 +40,19 @@ class NewsView(ModelView):
     # list_columns = ['name','posted_date', 'media']
     add_columns = ['name', 'body', 'media']
     # label_columns = {'name':'News Title', 'posted_date':'Posted On', 'media':'Gallery'}
-    related_views = [MediaView]
+    related_views = [MyMediaView]
 
 
 class PublicationView(ModelView):
 
     datamodel = SQLAInterface(Publication)
-    list_widget = ListThumbnail
+    list_widget = ListItem
 
     list_columns = ['photo_img_thumbnail', 'name', 'published_date']
     related_views = [MediaView]
-    add_fieldsets = [
-        ('Media', {'fields': ['Media.photo']})
-    ]
+    # add_fieldsets = [
+    #     ('Media', {'fields': ['Media.photo']})
+    # ]
 
 
 
@@ -77,6 +81,8 @@ appbuilder.add_view(PublicationView, "Publications", icon="fa-folder-open-o", ca
 appbuilder.add_view(ActivityView, "Activities", icon="fa-folder-open-o", category="Admin")
 appbuilder.add_view(MessageView, "Messages", icon="fa-folder-open-o", category="Admin")
 appbuilder.add_view(MediaView, "Media", icon="fa-folder-open-o", category="Admin")
+appbuilder.add_view(MyMediaView, "MyMedia", icon="fa-folder-open-o", category="Admin")
+
 
 
 
