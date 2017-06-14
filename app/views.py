@@ -13,7 +13,7 @@ class MediaView(ModelView):
 
     list_widget = ListThumbnail
 
-    list_columns = ['news', 'activities', 'publications', 'messages', 'photo']
+    list_columns = ['photo','news', 'activities', 'publications', 'messages']
 
 
     add_fieldsets = [
