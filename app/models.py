@@ -30,21 +30,21 @@ class Media(Model):
     def photo_img(self):
         im = ImageManager()
         if self.photo:
-            return Markup('<a href="' + url_for('MediaModelView.show', pk=str(self.id)) + \
+            return Markup('<a href="' + url_for('MediaView.show', pk=str(self.id)) + \
                           '" class="thumbnail"><img src="' + im.get_url(self.photo) + \
                           '" alt="Photo" class="img-rounded img-responsive"></a>')
         else:
-            return Markup('<a href="' + url_for('MediaModelView.show', pk=str(self.id)) + \
+            return Markup('<a href="' + url_for('MediaView.show', pk=str(self.id)) + \
                           '" class="thumbnail"><img src="//:0" alt="Photo" class="img-responsive"></a>')
 
     def photo_img_thumbnail(self):
         im = ImageManager()
         if self.photo:
-            return Markup('<a href="' + url_for('MediaModelView.show', pk=str(self.id)) + \
+            return Markup('<a href="' + url_for('MediaView.show', pk=str(self.id)) + \
                           '" class="thumbnail"><img src="' + im.get_url_thumbnail(self.photo) + \
                           '" alt="Photo" class="img-rounded img-responsive"></a>')
         else:
-            return Markup('<a href="' + url_for('MediaModelView.show', pk=str(self.id)) + \
+            return Markup('<a href="' + url_for('MediaView.show', pk=str(self.id)) + \
                           '" class="thumbnail"><img src="//:0" alt="Photo" class="img-responsive"></a>')
 
 

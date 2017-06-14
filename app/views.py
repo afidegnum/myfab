@@ -13,7 +13,7 @@ class MediaView(ModelView):
 
     list_widget = ListThumbnail
 
-    list_columns = ['photo']
+    list_columns = ['photo_img_thumbnail']
 
 
     add_fieldsets = [
@@ -30,10 +30,8 @@ class AboutView(ModelView):
 
 
 
-class NewsView(MasterDetailView):
+class NewsView(ModelView):
     datamodel = SQLAInterface(News)
-
-
 
     # list_columns = ['name','posted_date', 'media']
     add_columns = ['name', 'body', 'media']
@@ -41,12 +39,17 @@ class NewsView(MasterDetailView):
     related_views = [MediaView]
 
 
-class PublicationView(MasterDetailView):
+class PublicationView(ModelView):
 
     datamodel = SQLAInterface(Publication)
-    list_columns = ['media', 'name', 'published_date']
-    related_views = [MediaView]
     list_widget = ListThumbnail
+
+    list_columns = ['photo_img_thumbnail', 'name', 'published_date']
+    related_views = [MediaView]
+    add_fieldsets = [
+        ('Media', {'fields': ['Media.photo']})
+    ]
+
 
 
 class ActivityView(ModelView):
