@@ -44,7 +44,7 @@ class NewsView(MasterDetailView):
 class PublicationView(MasterDetailView):
 
     datamodel = SQLAInterface(Publication)
-    list_columns = ['photo', 'name', 'published_date']
+    list_columns = ['media', 'name', 'published_date']
     related_views = [MediaView]
     list_widget = ListThumbnail
 
