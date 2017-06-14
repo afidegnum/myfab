@@ -27,6 +27,7 @@ class MediaView(ModelView):
 class MyMediaView(ModelView):
     datamodel = SQLAInterface(Media)
     add_template = 'media_add.html'
+    static_folder = 'static/appbuilder'
 
 
 class AboutView(ModelView):
