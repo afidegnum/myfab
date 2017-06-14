@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="app.db">
+  <database-model serializer="dbm" rdbms="SQLITE" format-version="4.2">
+    <root id="1"/>
+    <schema id="2" parent="1" name="main">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <table id="3" parent="2" name="ab_permission"/>
+    <table id="4" parent="2" name="ab_permission_view"/>
+    <table id="5" parent="2" name="ab_permission_view_role"/>
+    <table id="6" parent="2" name="ab_register_user"/>
+    <table id="7" parent="2" name="ab_role"/>
+    <table id="8" parent="2" name="ab_user"/>
+    <table id="9" parent="2" name="ab_user_role"/>
+    <table id="10" parent="2" name="ab_view_menu"/>
+    <table id="11" parent="2" name="sqlite_master"/>
+    <column id="12" parent="3" name="id">
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="13" parent="3" name="name">
+      <Position>1</Position>
+      <DataType>VARCHAR(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="14" parent="3" name="sqlite_autoindex_ab_permission_1">
+      <ColNames>name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="15" parent="3">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="16" parent="3">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_ab_permission_1</UnderlyingIndexName>
+    </key>
+    <column id="17" parent="4" name="id">
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="18" parent="4" name="permission_id">
+      <Position>1</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <column id="19" parent="4" name="view_menu_id">
+      <Position>2</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <key id="20" parent="4">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="21" parent="4">
+      <ColNames>permission_id</ColNames>
+      <RefTableName>ab_permission</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="22" parent="4">
+      <ColNames>view_menu_id</ColNames>
+      <RefTableName>ab_view_menu</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="23" parent="5" name="id">
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="24" parent="5" name="permission_view_id">
+      <Position>1</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <column id="25" parent="5" name="role_id">
+      <Position>2</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <key id="26" parent="5">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="27" parent="5">
+      <ColNames>permission_view_id</ColNames>
+      <RefTableName>ab_permission_view</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="28" parent="5">
+      <ColNames>role_id</ColNames>
+      <RefTableName>ab_role</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="29" parent="6" name="id">
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="30" parent="6" name="first_name">
+      <Position>1</Position>
+      <DataType>VARCHAR(64)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="31" parent="6" name="last_name">
+      <Position>2</Position>
+      <DataType>VARCHAR(64)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="32" parent="6" name="username">
+      <Position>3</Position>
+      <DataType>VARCHAR(64)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="33" parent="6" name="password">
+      <Position>4</Position>
+      <DataType>VARCHAR(256)|0</DataType>
+    </column>
+    <column id="34" parent="6" name="email">
+      <Position>5</Position>
+      <DataType>VARCHAR(64)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="35" parent="6" name="registration_date">
+      <Position>6</Position>
+      <DataType>DATETIME|0</DataType>
+    </column>
+    <column id="36" parent="6" name="registration_hash">
+      <Position>7</Position>
+      <DataType>VARCHAR(256)|0</DataType>
+    </column>
+    <index id="37" parent="6" name="sqlite_autoindex_ab_register_user_1">
+      <ColNames>username</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="38" parent="6">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="39" parent="6">
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_ab_register_user_1</UnderlyingIndexName>
+    </key>
+    <column id="40" parent="7" name="id">
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="41" parent="7" name="name">
+      <Position>1</Position>
+      <DataType>VARCHAR(64)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="42" parent="7" name="sqlite_autoindex_ab_role_1">
+      <ColNames>name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="43" parent="7">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="44" parent="7">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_ab_role_1</UnderlyingIndexName>
+    </key>
+    <column id="45" parent="8" name="id">
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="46" parent="8" name="first_name">
+      <Position>1</Position>
+      <DataType>VARCHAR(64)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="47" parent="8" name="last_name">
+      <Position>2</Position>
+      <DataType>VARCHAR(64)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="48" parent="8" name="username">
+      <Position>3</Position>
+      <DataType>VARCHAR(64)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="49" parent="8" name="password">
+      <Position>4</Position>
+      <DataType>VARCHAR(256)|0</DataType>
+    </column>
+    <column id="50" parent="8" name="active">
+      <Position>5</Position>
+      <DataType>BOOLEAN|0</DataType>
+    </column>
+    <column id="51" parent="8" name="email">
+      <Position>6</Position>
+      <DataType>VARCHAR(64)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="52" parent="8" name="last_login">
+      <Position>7</Position>
+      <DataType>DATETIME|0</DataType>
+    </column>
+    <column id="53" parent="8" name="login_count">
+      <Position>8</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <column id="54" parent="8" name="fail_login_count">
+      <Position>9</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <column id="55" parent="8" name="created_on">
+      <Position>10</Position>
+      <DataType>DATETIME|0</DataType>
+    </column>
+    <column id="56" parent="8" name="changed_on">
+      <Position>11</Position>
+      <DataType>DATETIME|0</DataType>
+    </column>
+    <column id="57" parent="8" name="created_by_fk">
+      <Position>12</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <column id="58" parent="8" name="changed_by_fk">
+      <Position>13</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <index id="59" parent="8" name="sqlite_autoindex_ab_user_1">
+      <ColNames>username</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="60" parent="8" name="sqlite_autoindex_ab_user_2">
+      <ColNames>email</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="61" parent="8">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="62" parent="8">
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_ab_user_1</UnderlyingIndexName>
+    </key>
+    <key id="63" parent="8">
+      <ColNames>email</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_ab_user_2</UnderlyingIndexName>
+    </key>
+    <foreign-key id="64" parent="8">
+      <ColNames>created_by_fk</ColNames>
+      <RefTableName>ab_user</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="65" parent="8">
+      <ColNames>changed_by_fk</ColNames>
+      <RefTableName>ab_user</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <check id="66" parent="8">
+      <Predicate>active IN (0, 1)</Predicate>
+    </check>
+    <column id="67" parent="9" name="id">
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="68" parent="9" name="user_id">
+      <Position>1</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <column id="69" parent="9" name="role_id">
+      <Position>2</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <key id="70" parent="9">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="71" parent="9">
+      <ColNames>user_id</ColNames>
+      <RefTableName>ab_user</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="72" parent="9">
+      <ColNames>role_id</ColNames>
+      <RefTableName>ab_role</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="73" parent="10" name="id">
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="74" parent="10" name="name">
+      <Position>1</Position>
+      <DataType>VARCHAR(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="75" parent="10" name="sqlite_autoindex_ab_view_menu_1">
+      <ColNames>name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="76" parent="10">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="77" parent="10">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_ab_view_menu_1</UnderlyingIndexName>
+    </key>
+    <column id="78" parent="11" name="type">
+      <DataType>text|0</DataType>
+    </column>
+    <column id="79" parent="11" name="name">
+      <Position>1</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="80" parent="11" name="tbl_name">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="81" parent="11" name="rootpage">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+    </column>
+    <column id="82" parent="11" name="sql">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+    </column>
+  </database-model>
+</dataSource>
