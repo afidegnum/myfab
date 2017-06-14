@@ -2,18 +2,18 @@
 
 {% block head_css %}
     {{ super() }}
-<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
-<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="shortcut icon" href="{{ url_for('appbuilder.static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('appbuilder.static', filename='favicon.ico') }}" type="image/x-icon">
 
 <!-- Generic page styles -->
-<link rel="stylesheet" href="{{ url_for('static', filename='appbuilder/css/style.css') }}">
+<link rel="stylesheet" href="{{ url_for('appbuilder.static', filename='css/style.css') }}">
 
 <!-- blueimp Gallery styles -->
 <link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
 
 <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
-<link rel="stylesheet" href="{{ url_for('static', filename='appbuilder/css/jquery.fileupload.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='appbuilder/css/jquery.fileupload-ui.css') }}">
+<link rel="stylesheet" href="{{ url_for('appbuilder.static', filename='css/jquery.fileupload.css') }}">
+<link rel="stylesheet" href="{{ url_for('appbuilder.static', filename='css/jquery.fileupload-ui.css') }}">
 {% endblock %}
 
 
@@ -182,7 +182,7 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
-<script src="{{ url_for('static', filename='appbuilder/js/vendor/jquery.ui.widget.js') }}"></script>
+<script src="{{ url_for('appbuilder.static', filename='js/vendor/jquery.ui.widget.js') }}"></script>
 <!-- The Templates plugin is included to render the upload/download listings -->
 <script src="http://blueimp.github.io/JavaScript-Templates/js/tmpl.min.js"></script>
 <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
@@ -194,25 +194,25 @@
 <!-- blueimp Gallery script -->
 <script src="http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
 <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
-<script src="{{ url_for('static', filename='appbuilder/js/jquery.iframe-transport.js') }}"></script>
+<script src="{{ url_for('appbuilder.static', filename='js/jquery.iframe-transport.js') }}"></script>
 <!-- The basic File Upload plugin -->
-<script src="{{ url_for('static', filename='appbuilder/js/jquery.fileupload.js') }}"></script>
+<script src="{{ url_for('appbuilder.static', filename='js/jquery.fileupload.js') }}"></script>
 <!-- The File Upload processing plugin -->
-<script src="{{ url_for('static', filename='appbuilder/js/jquery.fileupload-process.js') }}"></script>
+<script src="{{ url_for('appbuilder.static', filename='js/jquery.fileupload-process.js') }}"></script>
 <!-- The File Upload image preview & resize plugin -->
-<script src="{{ url_for('static', filename='appbuilder/js/jquery.fileupload-image.js') }}"></script>
+<script src="{{ url_for('appbuilder.static', filename='js/jquery.fileupload-image.js') }}"></script>
 <!-- The File Upload audio preview plugin -->
-<script src="{{ url_for('static', filename='appbuilder/js/jquery.fileupload-audio.js') }}"></script>
+<script src="{{ url_for('appbuilder.static', filename='js/jquery.fileupload-audio.js') }}"></script>
 <!-- The File Upload video preview plugin -->
-<script src="{{ url_for('static', filename='appbuilder/js/jquery.fileupload-video.js') }}"></script>
+<script src="{{ url_for('appbuilder.static', filename='js/jquery.fileupload-video.js') }}"></script>
 <!-- The File Upload validation plugin -->
-<script src="{{ url_for('static', filename='appbuilder/js/jquery.fileupload-validate.js') }}"></script>
+<script src="{{ url_for('appbuilder.static', filename='js/jquery.fileupload-validate.js') }}"></script>
 <!-- The File Upload user interface plugin -->
-<script src="{{ url_for('static', filename='appbuilder/js/jquery.fileupload-ui.js') }}"></script>
+<script src="{{ url_for('appbuilder.static', filename='js/jquery.fileupload-ui.js') }}"></script>
 <!-- The main application script -->
-<script src="{{ url_for('static', filename='appbuilder/js/main.js') }}"></script>
+<script src="{{ url_for('appbuilder.static', filename='js/main.js') }}"></script>
 <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE 8 and IE 9 -->
 <!--[if (gte IE 8)&(lt IE 10)]>
-<script src="{{ url_for('static', filename='appbuilder/js/cors/jquery.xdr-transport.js') }}"></script>
+<script src="{{ url_for('appbuilder.static', filename='js/cors/jquery.xdr-transport.js') }}"></script>
 <![endif]-->
 {% endblock %}
