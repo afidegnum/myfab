@@ -12,6 +12,7 @@ SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
 
 # Flask-WTF flag for CSRF
 CSRF_ENABLED = True
+WTF_CSRF_ENABLED = False
 
 #------------------------------
 # GLOBALS FOR APP Builder 

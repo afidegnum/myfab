@@ -1,11 +1,19 @@
-from flask import render_template
+import simplejson
+from flask import render_template, request
 from flask_appbuilder.models.sqla.interface import SQLAInterface
-from flask_appbuilder.views import MasterDetailView
-from flask_appbuilder import ModelView, AppBuilder
+from flask_appbuilder.views import MasterDetailView, SimpleFormView
+from flask_appbuilder import ModelView, AppBuilder, expose, has_access
+from flask_wtf import csrf
+from flask_wtf.csrf import generate_csrf
+from werkzeug.datastructures import FileStorage
+
 from .models import About, News, Publication, Activity, Message, Media
 from app import appbuilder, db
 from flask_appbuilder.widgets import ListThumbnail, ListAddWidget, FormInlineWidget, ListMasterWidget, ListItem
-
+from flask_appbuilder.filemanager import uuid_namegen, thumbgen_filename, ImageManager
+from flask_appbuilder.upload import ImageUploadField
+from PIL import Image, ImageOps
+import config
 
 class MediaView(ModelView):
 
@@ -28,6 +36,27 @@ class MyMediaView(ModelView):
     datamodel = SQLAInterface(Media)
     add_template = 'media_add.html'
     static_folder = 'static/appbuilder'
+
+    @expose('/upload',  methods=['POST'])
+    def upload_img(self):
+        im = ImageManager()
+        files = request.files['files']
+        if files and im.is_file_allowed(files):
+            sname = str(files)
+            imgsize = im.resize(files, (200, 100, True))
+            newname = im.generate_name(None, files)
+            mpath = config.IMG_UPLOAD_FOLDER + newname
+            newname = im.save_image(imgsize, mpath)
+            print newname
+        return 'success'
+
+
+
+    @expose('/upload', methods=['GET'])
+    def show_images(self):
+        sample = "files"
+        return simplejson.dumps({"files": sample})
+
 
 
 class AboutView(ModelView):
